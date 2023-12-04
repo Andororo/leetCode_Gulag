@@ -1,0 +1,23 @@
+.popup-container {
+    width: 400px; /* Adjust as needed */
+    height: 300px;
+    /* padding: 16px; */
+}
+
+body {
+    color: white;
+    /* Adjusted for better visibility */
+    /* box-shadow: 0px 5px 20px 2px rgb(0 0 0 / 0.35);  */
+    background-color: rgb(21, 21, 30);
+  }
+
+.header {
+    width: 25rem;
+    min-height: 20rem;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.prompt {
+    text-align:center;
+}

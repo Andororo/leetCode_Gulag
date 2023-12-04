@@ -1,0 +1,22 @@
+.popup-container {
+  width: 400px;
+  height: 300px;
+}
+
+body {
+  color: #fff;
+  background-color: #15151e;
+}
+
+.header {
+  width: 25rem;
+  min-height: 20rem;
+  transition: all .3s ease-in-out;
+  overflow: hidden;
+}
+
+.prompt {
+  text-align: center;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJtYXBwaW5ncyI6IkFBQUE7Ozs7O0FBTUE7Ozs7O0FBT0E7Ozs7Ozs7QUFPQSIsInNvdXJjZXMiOlsic3R5bGUuY3NzIl0sInNvdXJjZXNDb250ZW50IjpbIi5wb3B1cC1jb250YWluZXIge1xuICAgIHdpZHRoOiA0MDBweDsgLyogQWRqdXN0IGFzIG5lZWRlZCAqL1xuICAgIGhlaWdodDogMzAwcHg7XG4gICAgLyogcGFkZGluZzogMTZweDsgKi9cbn1cblxuYm9keSB7XG4gICAgY29sb3I6IHdoaXRlO1xuICAgIC8qIEFkanVzdGVkIGZvciBiZXR0ZXIgdmlzaWJpbGl0eSAqL1xuICAgIC8qIGJveC1zaGFkb3c6IDBweCA1cHggMjBweCAycHggcmdiKDAgMCAwIC8gMC4zNSk7ICAqL1xuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYigyMSwgMjEsIDMwKTtcbiAgfVxuXG4uaGVhZGVyIHtcbiAgICB3aWR0aDogMjVyZW07XG4gICAgbWluLWhlaWdodDogMjByZW07XG4gICAgdHJhbnNpdGlvbjogYWxsIDAuM3MgZWFzZS1pbi1vdXQ7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcbn1cblxuLnByb21wdCB7XG4gICAgdGV4dC1hbGlnbjpjZW50ZXI7XG59XG4iXSwibmFtZXMiOltdLCJ2ZXJzaW9uIjozLCJmaWxlIjoicG9wdXAuNzhmMjBlNjcuY3NzLm1hcCJ9 */
