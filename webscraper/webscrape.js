@@ -77,11 +77,15 @@ const scrapeFromTabs = async (page, index) => {
   );
   await tabLinks[index].click();
   
+  // $$eval is a puppeteer method that evaluate the page content 
+  // basically for each 'tr.ng-star-inserted' element put whatever content into an array
   const problem = await page.$$eval('tr.ng-star-inserted', (rows) => {
     return rows.map((row) => {
       // Extracting category information
       // return a reference to the found element
+      // find first element that matches the css
       const categoryElement = row.closest(".accordion-container")?.querySelector('button.flex-container-row.accordion.button.is-fullwidth p');
+      // maniuplate the data then set it equal to category
       const category = categoryElement ? categoryElement.textContent.trim() : null;
       //get difficulties
       const difficultyElement = row.querySelector('td.diff-col b')
@@ -144,9 +148,9 @@ const saveFileToJson = (fileName, dirLocation, data) => {
   const problem2 = await scrapeNeetCode150(page)
   const problem3 = await scrapeAllProblems(page)
   // //add to a json file
-  // saveFileToJson("Blind75.json", '../leetcode_problems', problem1)
-  // saveFileToJson("neetcode150.json", '../leetcode_problems', problem2)
-  // saveFileToJson("allproblem.json", '../leetcode_problems', problem3)
+  saveFileToJson("Blind75.json", '../leetcode_problems', problem1)
+  saveFileToJson("neetcode150.json", '../leetcode_problems', problem2)
+  saveFileToJson("allproblem.json", '../leetcode_problems', problem3)
   browser.close()
 })()
 
