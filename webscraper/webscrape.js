@@ -1,5 +1,6 @@
-const { doc } = require("prettier");
 const puppeteer = require("puppeteer");
+const fs = require('fs');
+const path = require("path");
 
 const url = "https://neetcode.io/practice/";
 
@@ -80,7 +81,7 @@ const scrapeFromTabs = async (page, index) => {
     return rows.map((row) => {
       // Extracting category information
       // return a reference to the found element
-      const categoryElement = row.closest(".accordion-container")?.querySelector('button.flex-container-row.accordion.button.is-fullwidth.active p');
+      const categoryElement = row.closest(".accordion-container")?.querySelector('button.flex-container-row.accordion.button.is-fullwidth p');
       const category = categoryElement ? categoryElement.textContent.trim() : null;
       //get difficulties
       const difficultyElement = row.querySelector('td.diff-col b')
@@ -98,6 +99,7 @@ const scrapeFromTabs = async (page, index) => {
       }
     }) 
   })
+  // console.log(problem)
   return problem
 }
 
@@ -107,25 +109,46 @@ const scrapeBlind75 = async (page) => {
 const scrapeNeetCode150 = async (page) => {
   return await scrapeFromTabs(page, 2)
 }
-const scrapeAllProblem = async (page) => {
+const scrapeAllProblems = async (page) => {
   return await scrapeFromTabs(page, 3)
 }
 
 /**
  * A function that add the problem list into a json file
  */
+const saveFileToJson = (fileName, dirLocation, data) => {
+  const directory = path.join(__dirname, dirLocation)
+  console.log(`Trying to save data to ${dirLocation}/${fileName}`)
+  try {
+    if (!fs.existsSync(directory)) {
+      console.log(`Directory ${directory} does not exist. Creating one now.`)
+      fs.mkdirSync(directory, {recursive: true})
+    }
+  }catch (err) {
+    console.log(err)
+  }
+  fs.writeFile(path.join(directory, fileName), JSON.stringify(data, null, 2), (err) => {
+    if (err) {
+      console.log('Could not save data')
+    }else {
+      console.log(`Data Saved to ${directory}`)
+    }
+  })
+}
 
 
-
-(async () => {
+;(async () => {
   const { browser, page } = await initiatePuppeteer();
-  await scrapeEachCatorgries(page);
+  //await scrapeEachCatorgries(page);
   const problem1 = await scrapeBlind75(page)
   const problem2 = await scrapeNeetCode150(page)
-  const problem3 = await scrapeAllProblem(page)
-  //add to a json file
+  const problem3 = await scrapeAllProblems(page)
+  // //add to a json file
+  // saveFileToJson("Blind75.json", '../leetcode_problems', problem1)
+  // saveFileToJson("neetcode150.json", '../leetcode_problems', problem2)
+  // saveFileToJson("allproblem.json", '../leetcode_problems', problem3)
   browser.close()
-})();
+})()
 
 
 
@@ -138,11 +161,10 @@ const scrapeAllProblem = async (page) => {
   ).length;
   */
 
-// module.exports = {
-//   initiatePuppeteer,
-//   scrapeCategories,
-//   scrapeBlind75Problems,
-//   scrapeNeetCode150Problems,
-//   scrapeAllProblems,
-//   saveProblemstoJSON
-// }
+module.exports = {
+  initiatePuppeteer,
+  scrapeBlind75,
+  scrapeNeetCode150,
+  scrapeAllProblems,
+  // saveFileToJson
+}
