@@ -141,18 +141,18 @@ const saveFileToJson = (fileName, dirLocation, data) => {
 }
 
 
-;(async () => {
-  const { browser, page } = await initiatePuppeteer();
-  //await scrapeEachCatorgries(page);
-  const problem1 = await scrapeBlind75(page)
-  const problem2 = await scrapeNeetCode150(page)
-  const problem3 = await scrapeAllProblems(page)
-  // //add to a json file
-  saveFileToJson("Blind75.json", '../leetcode_problems', problem1)
-  saveFileToJson("neetcode150.json", '../leetcode_problems', problem2)
-  saveFileToJson("allproblem.json", '../leetcode_problems', problem3)
-  browser.close()
-})()
+// ;(async () => {
+//   const { browser, page } = await initiatePuppeteer();
+//   //await scrapeEachCatorgries(page);
+//   const problem1 = await scrapeBlind75(page)
+//   const problem2 = await scrapeNeetCode150(page)
+//   const problem3 = await scrapeAllProblems(page)
+//   // //add to a json file
+//   saveFileToJson("Blind75.json", '../leetcode_problems', problem1)
+//   saveFileToJson("neetcode150.json", '../leetcode_problems', problem2)
+//   saveFileToJson("allproblem.json", '../leetcode_problems', problem3)
+//   browser.close()
+// })()
 
 
 
@@ -170,5 +170,5 @@ module.exports = {
   scrapeBlind75,
   scrapeNeetCode150,
   scrapeAllProblems,
-  // saveFileToJson
+  saveFileToJson
 }
